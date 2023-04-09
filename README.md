@@ -99,17 +99,12 @@ func RedisAPISearch() {
 	var startTime time.Time = time.Now()
 
 	// Search for the term "math" and return the first 100 results
-	var values, _ = rdb.Do(ctx,
+	rdb.Do(ctx,
 		"FT.SEARCH", "courses", "math",
 		"RETURN", "0", "LIMIT", "0", "100",
-	).Slice()
+	)
 
 	// Print the time it took to run the query
 	fmt.Println(time.Since(startTime))
-
-	// Print the document ids
-	for _, id := range values {
-		fmt.Println(id)
-	}
 }
 ```

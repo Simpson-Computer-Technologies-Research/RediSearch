@@ -12,7 +12,7 @@ import (
 // Course struct
 type Course struct {
 	score          float32
-	hash           string
+	docId          string
 	id             string
 	name           string
 	title          string
@@ -49,7 +49,7 @@ func InitSchema(client *redisearch.Client) {
 // Insert data into the redis db
 func InsertData(client *redisearch.Client, course Course) {
 	// Create a new document that's going to be used to insert data into the db
-	var doc = redisearch.NewDocument(course.hash, course.score)
+	var doc = redisearch.NewDocument(course.docId, course.score)
 	doc.Set("components", course.components).
 		Set("description", course.description).
 		Set("id", course.id).

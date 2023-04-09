@@ -64,6 +64,7 @@ func InsertData(client *redisearch.Client, course Course) {
 	}
 }
 
+// Perform a search using the redis/v8 package
 func RediSearchAPI() {
 	// Create a client. By default a client is schemaless
 	// unless a schema is provided when creating the index

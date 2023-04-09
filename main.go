@@ -46,8 +46,8 @@ func InitSchema(client *redisearch.Client) {
 	}
 }
 
-// Insert data into the redis db
-func InsertData(client *redisearch.Client, course Course) {
+// Insert the course data into the redis db
+func (course Course) Insert(client *redisearch.Client) {
 	// Create a new document that's going to be used to insert data into the db
 	var doc = redisearch.NewDocument(course.docId, course.score)
 	doc.Set("components", course.components).
